@@ -1,4 +1,7 @@
 #include <iostream>
+#include <chrono>
+#include <thread>
+#include <vector>
 using std::cin;
 using std::cout;
 using std::endl;
