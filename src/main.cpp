@@ -64,6 +64,12 @@ int main(){
     int enemyX=1;
     int enemyY=1;
 
+    while(true){
+        update(map, enemyX, enemyY);
+        render(map);
+        timing();
+    }
+
     return 0;
 }
 
