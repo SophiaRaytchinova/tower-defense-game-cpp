@@ -27,6 +27,16 @@ void update(const char* map[ROWS][COLS], int &enemyX, int &enemyY){
     }
 }
 
+void render (const char* map[ROWS][COLS]){
+    system("cls");
+    for (int i=0; i<ROWS; i++){
+        for (int j=0; j<COLS; j++){
+           cout<<map[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
 int main(){
 
     const char* map[ROWS][COLS]={
