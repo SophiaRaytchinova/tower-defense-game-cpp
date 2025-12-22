@@ -27,7 +27,7 @@ void update(const char* map[ROWS][COLS], int &enemyX, int &enemyY){
     }
 }
 
-void render (const char* map[ROWS][COLS]){
+void render(const char* map[ROWS][COLS]){
     system("cls");
     for (int i=0; i<ROWS; i++){
         for (int j=0; j<COLS; j++){
@@ -35,6 +35,10 @@ void render (const char* map[ROWS][COLS]){
         }
         cout<<endl;
     }
+}
+
+void timing(){
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
 int main(){
