@@ -9,6 +9,11 @@ using std::endl;
 const int ROWS=10;
 const int COLS=10;
 
+const char emptyGround='.';
+const char pathWall='#';
+const char enemy= 'E';
+const char base='B';
+
 std::vector<std::pair<int, int>> path = {
         {1,1}, {1,2}, {2,2}, {3,2}, {3,3}, {3,4}, {3,5}, {3,6},
         {4,6}, {5,6}, {6,6}, {7,6}, {8,6}, {8,7}, {8,8}, {8,9}
@@ -32,10 +37,10 @@ void update(const char* map[ROWS][COLS], int &enemyX, int &enemyY){
     for (int i=0; i<path.size(); i++){
         if (path[i].first == enemyX && path[i].second == enemyY){
             if (i+1 < path.size()){
-                map[enemyX][enemyY] = ".";
+                map[enemyX][enemyY] = "\x1b[1;37m.";
                 enemyX = path[i+1].first;
                 enemyY = path[i+1].second;
-                map[enemyX][enemyY] = "E";
+                map[enemyX][enemyY] = "\x1b[1;31mE";
                 render(map);
                 timing();
             }
@@ -46,7 +51,7 @@ void update(const char* map[ROWS][COLS], int &enemyX, int &enemyY){
 int main(){
 
     const char* map[ROWS][COLS]={
-        {".", ".", ".", "#", "#", "#", "#", "#", "#", "#"},
+        {".", ".", "#", "#", "#", "#", "#", "#", "#", "#"},
         {".", "E", ".", ".", ".", ".", ".", ".", ".", "#"},
         {".", ".", ".", "#", "#", "#", "#", "#", ".", "#"},
         {".", ".", ".", ".", ".", ".", ".", "#", ".", "#"},
@@ -57,11 +62,6 @@ int main(){
         {".", "#", ".", "#", ".", "#", ".", ".", ".", "B"},
         {".", "#", "#", "#", "#", "#", "#", "#", "#", "#"}
     };
-
-    const char emptyGround='.';
-    const char pathWall='#';
-    const char enemy='E';
-    const char base='B';
 
     int enemyX=1;
     int enemyY=1;
