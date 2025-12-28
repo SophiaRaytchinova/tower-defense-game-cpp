@@ -6,16 +6,19 @@
 using std::cin;
 using std::cout;
 using std::endl;
+//map constants
 const int ROWS = 10;
 const int COLS = 10;
 const char emptyGround = '.';
 const char pathWall = '#';
 const char enemy = 'E';
 const char base = 'B';
+//ANSI color codes
 const char* RED   = "\x1b[1;31m";
 const char* BLUE  = "\x1b[1;34m";
 const char* RESET = "\x1b[0m";
-const char* topAndBottomBorder = "+---------------------+"; //could be written better to work with every size of map
+//constant border, could be improved to work with every size of map
+const char* topAndBottomBorder = "+---------------------+";
 
 //enemies hardcoded path
 std::vector<std::pair<int, int>> path = {
@@ -43,7 +46,6 @@ void enableANSI() {
 void render(char map[ROWS][COLS]) {
     clearScreen(); //works only on windows
     //cout << "\x1b[2J\x1b[H"; //works everywhere but it flickers on windows
-
     cout << topAndBottomBorder << endl;
     for (int i = 0; i < ROWS; i++) {
         cout << "| ";
