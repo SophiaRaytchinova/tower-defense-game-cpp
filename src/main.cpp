@@ -2,6 +2,7 @@
 #include <chrono> //for miliseconds
 #include <thread> //for sleep function
 #include <vector> //for enemies hardcoded path
+#include <windows.h> //for replacing "system("cls")"
 using std::cin;
 using std::cout;
 using std::endl;
@@ -18,9 +19,17 @@ std::vector<std::pair<int, int>> path = {
     {4,6}, {5,6}, {6,6}, {7,6}, {8,6}, {8,7}, {8,8}, {8,9}
 };
 
+//function to replae system("cls")"
+void clearScreen() {
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD position = {0, 0};
+    SetConsoleCursorPosition(hOut, position);
+}
+
 //function for erasing the console and printing the map again
 void render(char map[ROWS][COLS]) {
-    system("cls");
+    //system("cls");
+    clearScreen();
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLS; j++){
             if (map[i][j] == 'E') {
