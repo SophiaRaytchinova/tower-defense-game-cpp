@@ -26,6 +26,15 @@ void clearScreen() {
     SetConsoleCursorPosition(hOut, position);
 }
 
+//function to enable ansi mode for colored text in windows console
+void enableANSI() {
+    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    DWORD dwMode = 0;
+    GetConsoleMode(hOut, &dwMode);
+    dwMode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+    SetConsoleMode(hOut, dwMode);
+}
+
 //function for erasing the console and printing the map again
 void render(char map[ROWS][COLS]) {
     //system("cls");
@@ -68,8 +77,8 @@ void updateEnemiesCoord(char map[ROWS][COLS], int &enemyX, int &enemyY) {
     }
 }
 
-int main(){
-
+int main() {
+    enableANSI();
     char map[ROWS][COLS]= {
         {'.', '.', '#', '#', '#', '#', '#', '#', '#', '#'},
         {'.', 'E', '.', '.', '.', '.', '.', '.', '.', '#'},
@@ -88,8 +97,6 @@ int main(){
 
     while(true) {
         updateEnemiesCoord(map, enemyX, enemyY);
-        render(map);
-        timing();
     }
 
     return 0;
