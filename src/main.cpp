@@ -19,7 +19,7 @@ std::vector<std::pair<int, int>> path = {
     {4,6}, {5,6}, {6,6}, {7,6}, {8,6}, {8,7}, {8,8}, {8,9}
 };
 
-//function to replae system("cls")"
+//function to replace system("cls")"
 void clearScreen() {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD position = {0, 0};
@@ -30,7 +30,9 @@ void clearScreen() {
 void render(char map[ROWS][COLS]) {
     //system("cls");
     clearScreen();
+    cout << "+---------------------+" << endl;
     for (int i = 0; i < ROWS; i++) {
+        cout << "| ";
         for (int j = 0; j < COLS; j++){
             if (map[i][j] == 'E') {
                 cout << "\x1b[1;31m" << map[i][j] << "\x1b[0m ";
@@ -40,13 +42,14 @@ void render(char map[ROWS][COLS]) {
             }
             else cout << map[i][j] << " ";
         }
-        cout << endl;
+        cout << "|" << endl;
     }
+    cout << "+---------------------+" << endl;
 }
 
 //function for slowing down the enemies movement so the enemy doesn't "teleport"
 void timing() {
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 }
 
 //function for updating the enemies coordinates along the hardcoded path
@@ -66,6 +69,7 @@ void updateEnemiesCoord(char map[ROWS][COLS], int &enemyX, int &enemyY) {
 }
 
 int main(){
+
     char map[ROWS][COLS]= {
         {'.', '.', '#', '#', '#', '#', '#', '#', '#', '#'},
         {'.', 'E', '.', '.', '.', '.', '.', '.', '.', '#'},
