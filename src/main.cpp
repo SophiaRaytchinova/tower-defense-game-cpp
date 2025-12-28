@@ -15,7 +15,7 @@ const char base = 'B';
 const char* RED   = "\x1b[1;31m";
 const char* BLUE  = "\x1b[1;34m";
 const char* RESET = "\x1b[0m";
-const char* topAndBottomBorder = "+---------------------+"; //could be written better
+const char* topAndBottomBorder = "+---------------------+"; //could be written better to work with every size of map
 
 //enemies hardcoded path
 std::vector<std::pair<int, int>> path = {
