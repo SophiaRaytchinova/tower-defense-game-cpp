@@ -12,6 +12,9 @@ const char emptyGround = '.';
 const char pathWall = '#';
 const char enemy = 'E';
 const char base = 'B';
+const char* RED   = "\x1b[1;31m";
+const char* BLUE  = "\x1b[1;34m";
+const char* RESET = "\x1b[0m";
 
 //enemies hardcoded path
 std::vector<std::pair<int, int>> path = {
@@ -26,7 +29,7 @@ void clearScreen() {
     SetConsoleCursorPosition(hOut, position);
 }
 
-//function to enable ansi mode for colored text in windows console
+//function to enable ANSI for colored text in windows console
 void enableANSI() {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     DWORD dwMode = 0;
@@ -37,17 +40,16 @@ void enableANSI() {
 
 //function for erasing the console and printing the map again
 void render(char map[ROWS][COLS]) {
-    //system("cls");
     clearScreen();
     cout << "+---------------------+" << endl;
     for (int i = 0; i < ROWS; i++) {
         cout << "| ";
         for (int j = 0; j < COLS; j++){
             if (map[i][j] == 'E') {
-                cout << "\x1b[1;31m" << map[i][j] << "\x1b[0m ";
+                cout << RED << map[i][j] << RESET << " ";
             }
             else if (map[i][j] == 'B') {
-                cout << "\x1b[1;34m" << map[i][j] << "\x1b[0m ";
+                cout << BLUE << map[i][j] << RESET << " ";
             }
             else cout << map[i][j] << " ";
         }
