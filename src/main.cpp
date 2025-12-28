@@ -15,6 +15,7 @@ const char base = 'B';
 const char* RED   = "\x1b[1;31m";
 const char* BLUE  = "\x1b[1;34m";
 const char* RESET = "\x1b[0m";
+const char* topAndBottomBorder = "+---------------------+"; //could be written better
 
 //enemies hardcoded path
 std::vector<std::pair<int, int>> path = {
@@ -40,8 +41,10 @@ void enableANSI() {
 
 //function for erasing the console and printing the map again
 void render(char map[ROWS][COLS]) {
-    clearScreen();
-    cout << "+---------------------+" << endl;
+    clearScreen(); //works only on windows
+    //cout << "\x1b[2J\x1b[H"; //works everywhere but it flickers on windows
+
+    cout << topAndBottomBorder << endl;
     for (int i = 0; i < ROWS; i++) {
         cout << "| ";
         for (int j = 0; j < COLS; j++){
@@ -55,7 +58,7 @@ void render(char map[ROWS][COLS]) {
         }
         cout << "|" << endl;
     }
-    cout << "+---------------------+" << endl;
+    cout << topAndBottomBorder << endl;
 }
 
 //function for slowing down the enemies movement so the enemy doesn't "teleport"
