@@ -118,10 +118,16 @@ int main() {
         {'.', '#', '.', '#', '.', '#', '.', '.', '.', 'B'},
         {'.', '#', '#', '#', '#', '#', '#', '#', '#', '#'}
     };
-    //initial enemy coordinates
-    int enemyX = 1;
-    int enemyY = 1;
 
+    //initial enemy coordinates
+    Enemy enemy1;
+    enemy1.x = 1;
+    enemy1.y = 1;
+    enemy1.health = 10;
+    enemy1.strength = 1;
+    enemy1.pathIndex = 0;
+    enemy1.alive = 1;
+    
     while(true) {
         updateEnemiesCoord(map, enemyX, enemyY);
     }
