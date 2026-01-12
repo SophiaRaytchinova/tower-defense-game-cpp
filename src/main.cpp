@@ -129,7 +129,7 @@ int main() {
     enemy1.alive = 1;
     
     while(true) {
-        updateEnemiesCoord(map, enemyX, enemyY);
+        updateEnemiesCoord(map, enemy1.x, enemy1.y);
     }
 
     return 0;
