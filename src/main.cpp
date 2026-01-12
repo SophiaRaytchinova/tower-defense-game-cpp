@@ -25,6 +25,15 @@ struct Point {
     int y;
 };
 
+struct Enemy{
+    int x;
+    int y;
+    int health;
+    int strength;
+    int pathIndex;
+    bool alive; //1 alive, 0 dead
+};
+
 //enemies hardcoded path
 std::vector<std::pair<int, int>> path = {
     {1,1}, {1,2}, {2,2}, {3,2}, {3,3}, {3,4}, {3,5}, {3,6},
