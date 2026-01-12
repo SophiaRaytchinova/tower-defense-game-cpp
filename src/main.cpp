@@ -89,19 +89,37 @@ void timing() {
 }
 
 //function for updating the enemies coordinates along the hardcoded path
-void updateEnemiesCoord(char map[ROWS][COLS], int &enemyX, int &enemyY) {
-    for (int i = 0; i < path.size(); i++) {
-        if (path[i].first == enemyX && path[i].second == enemyY) {
-            if (i + 1 < path.size()) {
-                map[enemyX][enemyY] = emptyGround;
-                enemyX = path[i + 1].first;
-                enemyY = path[i + 1].second;
-                map[enemyX][enemyY] = enemy;
-                render(map);
-                timing();
-            }
-        }
+void updateEnemiesCoord(char map[ROWS][COLS], Enemy& en) {
+    if (!en.alive) return;
+    if (en.pathIndex + 1 < path.size()){
+        map[en.x][en.y] = emptyGround;
+        en.pathIndex++;
+        en.x = path[en.pathIndex].first;
+        en.y = path[en.pathIndex].second;
+        map[en.x][en.y] = enemy;
+        render(map);
+        timing();
     }
+    else {
+        en.alive = 0;
+        map[en.x][en.y] = emptyGround;
+        cout <<"Enemy reached the base!" << endl;
+        timing();
+    }
+    
+    
+    // for (int i = 0; i < path.size(); i++) {
+    //     if (path[i].first == enemyX && path[i].second == enemyY) {
+    //         if (i + 1 < path.size()) {
+    //             map[enemyX][enemyY] = emptyGround;
+    //             enemyX = path[i + 1].first;
+    //             enemyY = path[i + 1].second;
+    //             map[enemyX][enemyY] = enemy;
+    //             render(map);
+    //             timing();
+    //         }
+    //     }
+    // }
 }
 
 int main() {
@@ -128,8 +146,8 @@ int main() {
     enemy1.pathIndex = 0;
     enemy1.alive = 1;
     
-    while(true) {
-        updateEnemiesCoord(map, enemy1.x, enemy1.y);
+    while(enemy1.alive) {
+        updateEnemiesCoord(map, enemy1);
     }
 
     return 0;
