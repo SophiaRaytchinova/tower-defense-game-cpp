@@ -20,6 +20,11 @@ const char* RESET = "\x1b[0m";
 //constant border, could be improved to work with every size of map
 const char* topAndBottomBorder = "+---------------------+";
 
+struct Point {
+    int x;
+    int y;
+};
+
 //enemies hardcoded path
 std::vector<std::pair<int, int>> path = {
     {1,1}, {1,2}, {2,2}, {3,2}, {3,3}, {3,4}, {3,5}, {3,6},
