@@ -25,16 +25,6 @@ struct Point {
     int y;
 };
 
-struct Enemy{
-    int x;
-    int y;
-    int health;
-    int strength;
-    int pathIndex;
-    char symbol;
-    bool alive; //1 alive, 0 dead
-};
-
 struct Tower{
     int x; //?
     int y; //?
