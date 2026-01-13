@@ -25,19 +25,12 @@ struct Point {
     int y;
 };
 
-struct Enemy{
-    int x;
-    int y;
-    int health;
-    int strength;
-    int pathIndex;
-    bool alive; //1 alive, 0 dead
-};
-
 struct Tower{
-    int x;
-    int y;
-    int damage;
+    int x; //?
+    int y; //?
+    int health;
+    int energy;
+    char symbol;
 };
 
 //enemies hardcoded path
@@ -106,20 +99,6 @@ void updateEnemiesCoord(char map[ROWS][COLS], Enemy& en) {
         cout <<"Enemy reached the base!" << endl;
         timing();
     }
-    
-    
-    // for (int i = 0; i < path.size(); i++) {
-    //     if (path[i].first == enemyX && path[i].second == enemyY) {
-    //         if (i + 1 < path.size()) {
-    //             map[enemyX][enemyY] = emptyGround;
-    //             enemyX = path[i + 1].first;
-    //             enemyY = path[i + 1].second;
-    //             map[enemyX][enemyY] = enemy;
-    //             render(map);
-    //             timing();
-    //         }
-    //     }
-    // }
 }
 
 int main() {
