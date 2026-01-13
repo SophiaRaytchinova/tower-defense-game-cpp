@@ -25,14 +25,6 @@ struct Point {
     int y;
 };
 
-struct Tower{
-    int x; //?
-    int y; //?
-    int health;
-    int energy;
-    char symbol;
-};
-
 //enemies hardcoded path
 std::vector<std::pair<int, int>> path = {
     {1,1}, {1,2}, {2,2}, {3,2}, {3,3}, {3,4}, {3,5}, {3,6},
