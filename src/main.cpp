@@ -3,6 +3,11 @@
 #include <thread> //for sleep function
 #include <vector> //for enemies hardcoded path
 #include <windows.h> //for replacing "system("cls")"
+#include "Enemy.h"
+#include "Tower.h"
+#include "world.h"
+#include "render.h"
+
 using std::cin;
 using std::cout;
 using std::endl;
