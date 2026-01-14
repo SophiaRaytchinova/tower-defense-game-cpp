@@ -1,5 +1,5 @@
 #pragma once
 #include "Enemy.h"
-#include "Tower.h"
+#include "Constants.h"
 
-void updateWorld(char map[10][10], Enemy &enemy);
+void updateEnemiesCoord(char map[ROWS][COLS], Enemy& en);
