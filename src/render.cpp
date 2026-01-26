@@ -1,5 +1,7 @@
 #include "../include/render.h"
-#include "../include/constants.h"
+#include "../include/symbolConstants.h"
+#include "../include/sizeConstants.h"
+#include "../include/colorConstants.h"
 #include "../include/path.h"
 #include "../include/utils.h"
 #include <iostream>
@@ -7,8 +9,7 @@ using std::cout;
 using std::endl;
 
 void render(char map[ROWS][COLS]) {
-    clearScreen(); //works only on windows
-    //cout << "\x1b[2J\x1b[H"; //works everywhere but it flickers on windows
+    clearScreen();
     cout << topAndBottomBorder << endl;
     for (int i = 0; i < ROWS; i++) {
         cout << "| ";

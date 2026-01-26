@@ -1,5 +1,5 @@
 #pragma once
-#include "Enemy.h"
-#include "Constants.h"
+#include "gameObjects.h"
+#include "sizeConstants.h"
 
 void updateEnemiesCoord(char map[ROWS][COLS], Enemy& en);

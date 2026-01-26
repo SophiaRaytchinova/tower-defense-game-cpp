@@ -1,7 +1,12 @@
 #include "../include/utils.h"
 #include "../include/world.h"
-#include "../include/enemy.h"
-#include "../include/constants.h"
+#include "../include/gameObjects.h"
+#include "../include/symbolConstants.h"
+#include "../include/colorConstants.h"
+#include "../include/sizeConstants.h"
+#include "../include/render.h"
+#include "../include/path.h"
+
 int main() {
     enableANSI();
     char map[ROWS][COLS]= {
@@ -17,7 +22,7 @@ int main() {
         {'.', '#', '#', '#', '#', '#', '#', '#', '#', '#'}
     };
 
-    Enemy enemy1{1,1,10,1,0,1};
+    Enemy enemy1{1, 1, 10, 1, 0, 'E', true};
     while(enemy1.alive) {
         updateEnemiesCoord(map, enemy1);
     }

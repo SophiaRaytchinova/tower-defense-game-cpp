@@ -3,6 +3,8 @@
 #include "../include/world.h"
 #include "../include/render.h"
 #include "../include/utils.h"
+#include "../include/symbolConstants.h"
+#include "../include/gameObjects.h"
 using std::cout;
 using std::endl;
 

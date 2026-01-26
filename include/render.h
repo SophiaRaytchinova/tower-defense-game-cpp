@@ -1,3 +1,4 @@
 #pragma once
-#include "constants.h"
+#include "sizeConstants.h"
+
 void render(char map[ROWS][COLS]);

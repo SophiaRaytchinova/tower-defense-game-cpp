@@ -1,4 +1,4 @@
-#include "../include/constants.h"
+#include "../include/colorConstants.h"
 #include "../include/utils.h"
 #include <windows.h>
 #include <chrono>
@@ -8,8 +8,6 @@
 const char* RED   = "\x1b[1;31m";
 const char* BLUE  = "\x1b[1;34m";
 const char* RESET = "\x1b[0m";
-//constant border, could be improved to work with every size of map
-const char* topAndBottomBorder = "+---------------------+";
 
 void clearScreen() {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
