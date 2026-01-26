@@ -2,7 +2,6 @@
 #include "../include/world.h"
 #include "../include/gameObjects.h"
 #include "../include/symbolConstants.h"
-#include "../include/colorConstants.h"
 #include "../include/sizeConstants.h"
 #include "../include/render.h"
 #include "../include/path.h"

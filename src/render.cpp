@@ -1,7 +1,6 @@
 #include "../include/render.h"
 #include "../include/symbolConstants.h"
 #include "../include/sizeConstants.h"
-#include "../include/colorConstants.h"
 #include "../include/path.h"
 #include "../include/utils.h"
 #include <iostream>
