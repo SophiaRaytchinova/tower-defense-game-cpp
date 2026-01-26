@@ -1,10 +1,6 @@
-#include "../include/utils.h"
+#include "../include/display_utils.h"
 #include "../include/world.h"
-#include "../include/gameObjects.h"
-#include "../include/symbolConstants.h"
-#include "../include/sizeConstants.h"
-#include "../include/render.h"
-#include "../include/path.h"
+#include "../include/entities.h"
 
 int main() {
     enableANSI();

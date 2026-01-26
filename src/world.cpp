@@ -1,14 +1,12 @@
 #include <iostream>
-#include "../include/path.h"
+
 #include "../include/world.h"
-#include "../include/render.h"
-#include "../include/utils.h"
-#include "../include/symbolConstants.h"
-#include "../include/gameObjects.h"
+#include "../include/display_utils.h"
+#include "../include/entities.h"
+
 using std::cout;
 using std::endl;
 
-//enemies hardcoded path
 std::vector<std::pair<int, int>> path = {
     {1,1}, {1,2}, {2,2}, {3,2}, {3,3}, {3,4}, {3,5}, {3,6},
     {4,6}, {5,6}, {6,6}, {7,6}, {8,6}, {8,7}, {8,8}, {8,9}
@@ -30,6 +28,5 @@ void updateEnemiesCoord(char map[ROWS][COLS], Enemy &en) {
         map[en.x][en.y] = emptyGround;
         cout <<"Enemy reached the base!" << endl;
         timing();
-    }
-    
+    } 
 }

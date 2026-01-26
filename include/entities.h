@@ -1,16 +1,18 @@
 #pragma once
+
 #include <cstddef>
-struct Enemy{
+
+struct Enemy {
     int x;
     int y;
     int health;
     int strength;
     size_t pathIndex;
     char symbol;
-    bool alive; //1 alive, 0 dead
+    bool alive; // 1 alive, 0 dead
 };
 
-struct Tower{
+struct Tower {
     int x;
     int y;
     int health;
