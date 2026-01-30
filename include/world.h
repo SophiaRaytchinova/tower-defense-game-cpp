@@ -5,8 +5,8 @@
 
 #include "entities.h"
 
-constexpr int ROWS = 30;
-constexpr int COLS = 30;
+constexpr int ROWS = 10;
+constexpr int COLS = 10;
 
 extern const char emptyGround;
 extern const char pathWall;
