@@ -5,17 +5,23 @@
 struct Enemy {
     int x;
     int y;
-    int health;
+    double health;
+    double maxHealth;
     int strength;
     size_t pathIndex;
     char symbol;
-    bool alive; // 1 alive, 0 dead
+    bool alive;
 };
 
 struct Tower {
     int x;
     int y;
-    int health;
-    int energy;
+    char symbol;
+};
+
+struct DefenseTower {
+    int x;
+    int y;
+    int range;
     char symbol;
 };

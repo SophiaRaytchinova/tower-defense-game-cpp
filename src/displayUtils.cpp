@@ -1,4 +1,4 @@
-#include "../include/display_utils.h"
+#include "../include/displayUtils.h"
 #include "../include/world.h"
 
 #include <iostream>
