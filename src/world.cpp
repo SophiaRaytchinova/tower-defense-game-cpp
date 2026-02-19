@@ -10,6 +10,7 @@
 using std::cout;
 using std::endl;
 
+// y, x
 std::vector<std::pair<int, int>> path = {
     {0,0}, {1,0}, {2,0}, {3,0}, {4,0}, {5,0}, {5,1}, {6,1},
     {7,1}, {8,1}, {8,2}, {8,3}, {7,3}, {6,3}, {5,3}, {4,3}, 
@@ -28,8 +29,8 @@ void updateEnemiesCoord(char map[ROWS][COLS], Enemy &en) {
         en.y = path[en.pathIndex].first;
         en.x = path[en.pathIndex].second;
         map[en.y][en.x] = enemy;
-        render(map);
-        timing();
+        //render(map);
+        //timing();
     }
     else {
         en.alive = false; // it was 0 before, but it should be false to be consistent with the Enemy struct
@@ -51,7 +52,7 @@ bool isValidDefenseTowerPlacement(char map[ROWS][COLS], int x, int y) {
 
             if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS) {
                 if (map[ny][nx] == 'D') return false;
-                if (map[ny][nx] == pathWall) return false;
+                //if (map[ny][nx] == pathWall) return false;
             }
         }
     }
@@ -98,6 +99,7 @@ void damageEnemy(Enemy& enemy, double damage) {
 }
 
 void attackEnemies(std::vector<DefenseTower>& defenseTowers, std::vector<Enemy>& enemies) {
+    double distance;
     for (Enemy& enemy : enemies) {
         if (!enemy.alive) continue;
 
@@ -105,9 +107,10 @@ void attackEnemies(std::vector<DefenseTower>& defenseTowers, std::vector<Enemy>&
             int dx = d.x - enemy.x;
             int dy = d.y - enemy.y;
 
-            double distance = std::sqrt(dx * dx + dy * dy);
+            distance = std::sqrt(dx * dx + dy * dy);
 
             if (distance <= d.range) {
+                cout << "tower hit enemy" << endl;
                 damageEnemy(enemy, 10);
             }
         }
