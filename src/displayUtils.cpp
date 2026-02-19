@@ -39,9 +39,7 @@ void render(char map[ROWS][COLS]) {
 }
 
 void clearScreen() {
-    HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD position = {0, 0};
-    SetConsoleCursorPosition(hOut, position);
+    system("cls");
 }
 
 void enableANSI() {
