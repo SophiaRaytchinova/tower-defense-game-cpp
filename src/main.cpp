@@ -37,12 +37,12 @@ int main() {
 
         //render(map);
         //timing(); //added for slowing down
-        for (auto& e : enemies) drawHPBar(e);
+        //for (auto& e : enemies) drawHPBar(e);
 
         for (int i = enemies.size() - 1; i >= 0; i--) {
             if (!enemies[i].alive) enemies.erase(enemies.begin() + i);
         }
-        render(map);
+        render(map, enemies);
         timing();
     }
 

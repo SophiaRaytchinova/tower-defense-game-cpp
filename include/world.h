@@ -16,12 +16,12 @@ extern const char* topAndBottomBorder;
 
 extern std::vector<std::pair<int, int>> path;
 
-void render(char map[ROWS][COLS]);
+void render(char map[ROWS][COLS], std::vector<Enemy>& enemies);
 void updateEnemiesCoord(char map[ROWS][COLS], Enemy& en);
 void placeRandomDefenseTowers(char map[ROWS][COLS], std::vector<DefenseTower>& defenseTowers, int count);
 bool isValidDefenseTowerPlacement(char map[ROWS][COLS], int x, int y);
 void drawHPBar(const Enemy& enemy);
 void damageEnemy(Enemy& enemy, double damage);
 void attackEnemies(std::vector<DefenseTower>& defenseTowers, std::vector<Enemy>& enemies);
-void widenPath(char map[ROWS][COLS]);
+//void widenPath(char map[ROWS][COLS]);
 

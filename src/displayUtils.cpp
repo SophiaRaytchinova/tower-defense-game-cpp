@@ -19,7 +19,7 @@ const char enemy = 'E';
 const char base = 'B';
 const char* topAndBottomBorder = "+---------------------+";
 
-void render(char map[ROWS][COLS]) {
+void render(char map[ROWS][COLS], std::vector<Enemy>& enemies) {
     clearScreen();
     cout << topAndBottomBorder << endl;
     for (int i = 0; i < ROWS; i++) {
@@ -36,6 +36,9 @@ void render(char map[ROWS][COLS]) {
         cout << "|" << endl;
     }
     cout << topAndBottomBorder << endl;
+    if (!enemies.empty()) {
+        drawHPBar(enemies[0]); // Placeholder for HP bar
+    }
 }
 
 void clearScreen() {
