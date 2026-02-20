@@ -37,7 +37,7 @@ void render(char map[ROWS][COLS], std::vector<Enemy>& enemies) {
     }
     cout << topAndBottomBorder << endl;
     if (!enemies.empty()) {
-        drawHPBar(enemies[0]); // Placeholder for HP bar
+        drawHPBar(enemies[0]);
     }
 }
 

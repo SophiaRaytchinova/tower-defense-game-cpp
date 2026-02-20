@@ -28,12 +28,9 @@ void updateEnemiesCoord(char map[ROWS][COLS], Enemy &en) {
         en.pathIndex++;
         en.y = path[en.pathIndex].first;
         en.x = path[en.pathIndex].second;
-        map[en.y][en.x] = enemy;
-        //render(map);
-        //timing();
     }
     else {
-        en.alive = false; // it was 0 before, but it should be false to be consistent with the Enemy struct
+        en.alive = false;
         map[en.y][en.x] = emptyGround;
         cout <<"Enemy reached the base!" << endl;
         timing();
@@ -52,7 +49,6 @@ bool isValidDefenseTowerPlacement(char map[ROWS][COLS], int x, int y) {
 
             if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS) {
                 if (map[ny][nx] == 'D') return false;
-                //if (map[ny][nx] == pathWall) return false;
             }
         }
     }
