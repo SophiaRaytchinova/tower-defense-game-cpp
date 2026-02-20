@@ -6,4 +6,5 @@ extern const char* RESET;
 
 void clearScreen();
 void enableANSI();
-void timing();
+void sleep();
+void hideCursor();

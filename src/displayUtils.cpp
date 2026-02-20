@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <chrono>
 #include <thread>
+#include <sstream>
 
 using std::cout;
 using std::endl;
@@ -20,31 +21,46 @@ const char base = 'B';
 const char* topAndBottomBorder = "+---------------------+";
 
 void render(char map[ROWS][COLS], std::vector<Enemy>& enemies) {
-    clearScreen();
-    cout << topAndBottomBorder << endl;
+    // Double buffering: build entire frame in memory first
+    std::ostringstream buffer;
+    buffer << topAndBottomBorder << endl;
     for (int i = 0; i < ROWS; i++) {
-        cout << "| ";
+        buffer << "| ";
         for (int j = 0; j < COLS; j++){
             if (map[i][j] == 'E') {
-                cout << RED << map[i][j] << RESET << " ";
+                buffer << RED << map[i][j] << RESET << " ";
             }
             else if (map[i][j] == 'B') {
-                cout << BLUE << map[i][j] << RESET << " ";
+                buffer << BLUE << map[i][j] << RESET << " ";
             }
-            else cout << map[i][j] << " ";
+            else buffer << map[i][j] << " ";
         }
-        cout << "|" << endl;
+        buffer << "|" << endl;
     }
-    cout << topAndBottomBorder << endl;
+    buffer << topAndBottomBorder << endl;
     if (!enemies.empty()) {
-        drawHPBar(enemies[0]);
+        buffer << "Enemy HP: " << enemies[0].health << "%" << std::endl;
     }
+    
+    // Clear screen once and display entire buffer at once
+    clearScreen();
+    cout << buffer.str();
+    cout.flush();
+    hideCursor();  // Hide cursor after all output
 }
 
 void clearScreen() {
     HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD position = {0, 0};
     SetConsoleCursorPosition(hOut, position);
+}
+
+void hideCursor() {
+    HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cursorInfo;
+    cursorInfo.dwSize = 100;
+    cursorInfo.bVisible = FALSE;
+    SetConsoleCursorInfo(consoleHandle, &cursorInfo);
 }
 
 void enableANSI() {
@@ -55,6 +71,6 @@ void enableANSI() {
     SetConsoleMode(hOut, dwMode);
 }
 
-void timing() {
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+void sleep() {
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
 }

@@ -19,6 +19,8 @@ int main() {
         {'#', '#', '#', '#', '#', '.', '.', '.', '#', '#'}
     };
 
+    Tower tower {8, 9, 'B'};
+
     Enemy enemy1{0, 0, 100.0, 100.0, 0, 0, 'E', true};
     std::vector<Enemy> enemies = {enemy1};
 
@@ -44,6 +46,8 @@ int main() {
         std::cout << "Too many towers! Setting defense tower count to maximum." << std::endl;
     }
     
+    system("cls");
+    hideCursor();
 
     std::vector<DefenseTower> defenses;
     placeRandomDefenseTowers(map, defenses, defenseTowerCount);
@@ -51,14 +55,26 @@ int main() {
     while (!enemies.empty()) {
 
         attackEnemies(defenses, enemies);
-        for (auto& e : enemies) updateEnemiesCoord(map, e);
-        
         for (int i = enemies.size() - 1; i >= 0; i--) {
             if (!enemies[i].alive) enemies.erase(enemies.begin() + i);
         }
+
+        for (Enemy& e : enemies) updateEnemiesCoord(map, e);
+
+        // check if enemy reached the base position
+        for (const Enemy& e : enemies) {
+            if (e.x == tower.x && e.y == tower.y) {
+                std::cout << "Enemy reached the base! Game Over!" << std::endl;
+                return 0;
+            }
+        }
+
         render(map, enemies);
-        timing();
+        sleep();
     }
+
+    // if enemy reached base ...
+    // else user wins
 
     return 0;
 }

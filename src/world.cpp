@@ -21,20 +21,20 @@ std::vector<std::pair<int, int>> path = {
     {3,9}, {4,9}, {5,9}, {6,9}, {7,9}, {8,9}
 };
 
-void updateEnemiesCoord(char map[ROWS][COLS], Enemy &en) {
-    if (!en.alive) return;
-    if (en.pathIndex + 1 < path.size()) {
-        map[en.y][en.x] = emptyGround;
-        en.pathIndex++;
-        en.y = path[en.pathIndex].first;
-        en.x = path[en.pathIndex].second;
+void updateEnemiesCoord(char map[ROWS][COLS], Enemy &enemy) {
+    if (enemy.pathIndex + 1 < path.size()) {
+        // move enemy fowrard on the path
+        map[enemy.x][enemy.y] = emptyGround;
+        enemy.pathIndex++;
+        enemy.x = path[enemy.pathIndex].first;
+        enemy.y = path[enemy.pathIndex].second;
+        map[enemy.x][enemy.y] = enemy.symbol;
+
+        return;
     }
-    else {
-        en.alive = false;
-        map[en.y][en.x] = emptyGround;
-        cout <<"Enemy reached the base!" << endl;
-        timing();
-    } 
+
+    // enemy reached base
+    // map[enemy.x][enemy.y] = emptyGround;
 }
 
 bool isValidDefenseTowerPlacement(char map[ROWS][COLS], int x, int y) {
@@ -63,8 +63,8 @@ void placeRandomDefenseTowers(char map[ROWS][COLS], std::vector<DefenseTower>& d
     int attemps = 0;
 
     while (placed < count && attemps < maxAttemps) {
-        int x = rand() % COLS;
-        int y = rand() % ROWS;
+        int x = rand() % ROWS;
+        int y = rand() % COLS;
 
         if (isValidDefenseTowerPlacement(map, x, y)) {
             DefenseTower t;
@@ -106,13 +106,10 @@ void attackEnemies(std::vector<DefenseTower>& defenseTowers, std::vector<Enemy>&
             distance = std::sqrt(dx * dx + dy * dy);
 
             if (distance <= d.range) {
-                cout << "tower hit enemy" << endl;
+                // cout << "tower hit enemy" << endl;
                 damageEnemy(enemy, 10);
             }
         }
     }
 }
 
-void drawHPBar(const Enemy& enemy) {
-    std::cout << "Enemy HP: " << enemy.health << "%" << std::endl;
-}
