@@ -117,41 +117,6 @@ void attackEnemies(std::vector<DefenseTower>& defenseTowers, std::vector<Enemy>&
     }
 }
 
-void widenPath(char map[ROWS][COLS]) {
-
-    for (size_t i = 0; i < path.size(); i++) {
-
-        int y = path[i].first;
-        int x = path[i].second;
-
-        map[y][x] = emptyGround;
-
-        if (i > 0) {
-
-            int prevY = path[i - 1].first;
-            int prevX = path[i - 1].second;
-
-            // ако движението е вертикално
-            if (prevX == x) {
-                for (int dx = -1; dx <= 1; dx++) {
-                    int nx = x + dx;
-                    if (nx >= 0 && nx < COLS)
-                        map[y][nx] = emptyGround;
-                }
-            }
-
-            // ако движението е хоризонтално
-            if (prevY == y) {
-                for (int dy = -1; dy <= 1; dy++) {
-                    int ny = y + dy;
-                    if (ny >= 0 && ny < ROWS)
-                        map[ny][x] = emptyGround;
-                }
-            }
-        }
-    }
-}
-
 void drawHPBar(const Enemy& enemy) {
     std::cout << "Enemy HP: " << enemy.health << "%" << std::endl;
 }
