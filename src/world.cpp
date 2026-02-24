@@ -23,7 +23,7 @@ std::vector<std::pair<int, int>> path = {
 
 void updateEnemiesCoord(char map[ROWS][COLS], Enemy &enemy) {
     if (enemy.pathIndex + 1 < path.size()) {
-        // move enemy fowrard on the path
+       
         map[enemy.x][enemy.y] = emptyGround;
         enemy.pathIndex++;
         enemy.x = path[enemy.pathIndex].first;
@@ -33,8 +33,6 @@ void updateEnemiesCoord(char map[ROWS][COLS], Enemy &enemy) {
         return;
     }
 
-    // enemy reached base
-    // map[enemy.x][enemy.y] = emptyGround;
 }
 
 bool isValidDefenseTowerPlacement(char map[ROWS][COLS], int x, int y) {
@@ -90,7 +88,6 @@ void damageEnemy(Enemy& enemy, double damage) {
     if (enemy.health <= 0) {
         enemy.alive = false;
         enemy.health = 0;
-        cout << "Enemy killed!" << endl;
     }
 }
 
@@ -106,9 +103,8 @@ void attackEnemies(std::vector<DefenseTower>& defenseTowers, std::vector<Enemy>&
             distance = std::sqrt(dx * dx + dy * dy);
 
             if (distance <= defense.range) {
-                // cout << "tower hit enemy" << endl;
-                damageEnemy(enemy, 5);
-                break;  // Only take damage from one tower per frame
+                damageEnemy(enemy, 10);
+                break;  
             }
         }
     }

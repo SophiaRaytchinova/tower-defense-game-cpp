@@ -55,8 +55,19 @@ int main() {
     while (!enemies.empty()) {
 
         attackEnemies(defenses, enemies);
+        bool enemyKilled = false;
         for (int i = enemies.size() - 1; i >= 0; i--) {
-            if (!enemies[i].alive) enemies.erase(enemies.begin() + i);
+            if (!enemies[i].alive) {
+                enemies.erase(enemies.begin() + i);
+                enemyKilled = true;
+            }
+        }
+
+        if (enemyKilled) {
+            render(map, enemies);
+            std::cout << "\nEnemy killed!" << std::endl;
+            sleep();
+            sleep();
         }
 
         for (Enemy& enemy : enemies) updateEnemiesCoord(map, enemy);
@@ -72,9 +83,6 @@ int main() {
         render(map, enemies);
         sleep();
     }
-
-    // if enemy reached base ...
-    // else user wins
 
     return 0;
 }
