@@ -59,11 +59,11 @@ int main() {
             if (!enemies[i].alive) enemies.erase(enemies.begin() + i);
         }
 
-        for (Enemy& e : enemies) updateEnemiesCoord(map, e);
+        for (Enemy& enemy : enemies) updateEnemiesCoord(map, enemy);
 
         // check if enemy reached the base position
-        for (const Enemy& e : enemies) {
-            if (e.x == base.x && e.y == base.y) {
+        for (const Enemy& enemy : enemies) {
+            if (enemy.x == base.x && enemy.y == base.y) {
                 std::cout << "Enemy reached the base! Game Over!" << std::endl;
                 return 0;
             }

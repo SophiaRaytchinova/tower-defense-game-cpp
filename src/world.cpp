@@ -48,7 +48,7 @@ bool isValidDefenseTowerPlacement(char map[ROWS][COLS], int x, int y) {
             int ny = y + dy;
 
             if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS) {
-                if (map[ny][nx] == 'D') return false;
+                if (map[ny][nx] == 'T') return false;
             }
         }
     }
@@ -71,7 +71,7 @@ void placeRandomDefenseTowers(char map[ROWS][COLS], std::vector<DefenseTower>& d
             tower.x = x;
             tower.y = y;
             tower.range = 1;
-            tower.symbol = 'D';
+            tower.symbol = 'T';
 
             defenseTowers.push_back(tower);
             map[y][x] = tower.symbol;
@@ -107,7 +107,8 @@ void attackEnemies(std::vector<DefenseTower>& defenseTowers, std::vector<Enemy>&
 
             if (distance <= defense.range) {
                 // cout << "tower hit enemy" << endl;
-                damageEnemy(enemy, 10);
+                damageEnemy(enemy, 5);
+                break;  // Only take damage from one tower per frame
             }
         }
     }

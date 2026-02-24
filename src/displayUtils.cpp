@@ -12,6 +12,7 @@ using std::endl;
 
 const char* RED   = "\x1b[1;31m";
 const char* BLUE  = "\x1b[1;34m";
+const char* GREEN = "\x1b[38;5;82m";
 const char* RESET = "\x1b[0m";
 
 const char emptyGround = '.';
@@ -32,6 +33,9 @@ void render(char map[ROWS][COLS], std::vector<Enemy>& enemies) {
             }
             else if (map[i][j] == 'B') {
                 buffer << BLUE << map[i][j] << RESET << " ";
+            }
+            else if (map[i][j] == 'T') {
+                buffer << GREEN << map[i][j] << RESET << " ";
             }
             else buffer << map[i][j] << " ";
         }
