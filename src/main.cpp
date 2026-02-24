@@ -19,7 +19,7 @@ int main() {
         {'#', '#', '#', '#', '#', '.', '.', '.', '#', '#'}
     };
 
-    Tower tower {8, 9, 'B'};
+    BaseEntity base {8, 9, 'B'};
 
     Enemy enemy1{0, 0, 100.0, 100.0, 0, 0, 'E', true};
     std::vector<Enemy> enemies = {enemy1};
@@ -63,7 +63,7 @@ int main() {
 
         // check if enemy reached the base position
         for (const Enemy& e : enemies) {
-            if (e.x == tower.x && e.y == tower.y) {
+            if (e.x == base.x && e.y == base.y) {
                 std::cout << "Enemy reached the base! Game Over!" << std::endl;
                 return 0;
             }

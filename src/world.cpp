@@ -67,14 +67,14 @@ void placeRandomDefenseTowers(char map[ROWS][COLS], std::vector<DefenseTower>& d
         int y = rand() % COLS;
 
         if (isValidDefenseTowerPlacement(map, x, y)) {
-            DefenseTower t;
-            t.x = x;
-            t.y = y;
-            t.range = 1;
-            t.symbol = 'D';
+            DefenseTower tower;
+            tower.x = x;
+            tower.y = y;
+            tower.range = 1;
+            tower.symbol = 'D';
 
-            defenseTowers.push_back(t);
-            map[y][x] = t.symbol;
+            defenseTowers.push_back(tower);
+            map[y][x] = tower.symbol;
             placed++;
         }
         attemps++;
@@ -99,13 +99,13 @@ void attackEnemies(std::vector<DefenseTower>& defenseTowers, std::vector<Enemy>&
     for (Enemy& enemy : enemies) {
         if (!enemy.alive) continue;
 
-        for (auto& d : defenseTowers) {
-            int dx = d.x - enemy.x;
-            int dy = d.y - enemy.y;
+        for (auto& defense : defenseTowers) {
+            int dx = defense.x - enemy.x;
+            int dy = defense.y - enemy.y;
 
             distance = std::sqrt(dx * dx + dy * dy);
 
-            if (distance <= d.range) {
+            if (distance <= defense.range) {
                 // cout << "tower hit enemy" << endl;
                 damageEnemy(enemy, 10);
             }
