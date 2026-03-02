@@ -65,12 +65,13 @@ int main() {
             }
         }
 
-        if (enemyKilled) {
-            render(map, enemies, enemyKilled);
-            std::cout << "\nEnemy killed!" << std::endl;
-            sleep();
-            sleep();
-        }
+        // if (enemyKilled) {
+        //     render(map, enemies, enemyKilled);
+        //     std::cout << "\nEnemy killed!" << std::endl;
+        //     sleep();
+        //     sleep();
+        // }
+
 
         for (Enemy& enemy : enemies) updateEnemiesCoord(map, enemy);
 
