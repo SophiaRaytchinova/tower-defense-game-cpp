@@ -52,10 +52,12 @@ int main() {
     std::vector<DefenseTower> defenses;
     placeRandomDefenseTowers(map, defenses, defenseTowerCount);
  
+    bool enemyKilled = false;
+
     while (!enemies.empty()) {
 
         attackEnemies(defenses, enemies);
-        bool enemyKilled = false;
+        
         for (int i = enemies.size() - 1; i >= 0; i--) {
             if (!enemies[i].alive) {
                 enemies.erase(enemies.begin() + i);
@@ -64,7 +66,7 @@ int main() {
         }
 
         if (enemyKilled) {
-            render(map, enemies);
+            render(map, enemies, enemyKilled);
             std::cout << "\nEnemy killed!" << std::endl;
             sleep();
             sleep();
@@ -80,8 +82,9 @@ int main() {
             }
         }
 
-        render(map, enemies);
+        render(map, enemies, enemyKilled);
         sleep();
+        //enemyKilled = false;
     }
 
     return 0;

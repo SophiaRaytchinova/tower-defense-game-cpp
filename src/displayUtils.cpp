@@ -21,7 +21,7 @@ const char enemy = 'E';
 const char base = 'B';
 const char* topAndBottomBorder = "+---------------------+";
 
-void render(char map[ROWS][COLS], std::vector<Enemy>& enemies) {
+void render(char map[ROWS][COLS], std::vector<Enemy>& enemies, bool enemyKilled) {
     // Double buffering: build entire frame in memory first
     std::ostringstream buffer;
     buffer << topAndBottomBorder << endl;
@@ -46,6 +46,13 @@ void render(char map[ROWS][COLS], std::vector<Enemy>& enemies) {
         buffer << "Enemy HP: " << enemies[0].health << "%" << std::endl;
     }
     
+        if (enemyKilled) {
+            buffer << "STATUS:" << RED << "Enemy killed!" << RESET << std::endl;
+        }
+        else {
+            buffer << "STATUS:" << "Enemy alive." << RESET << std::endl;
+        }
+
     // Clear screen once and display entire buffer at once
     clearScreen();
     cout << buffer.str();
