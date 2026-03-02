@@ -53,8 +53,10 @@ int main() {
     placeRandomDefenseTowers(map, defenses, defenseTowerCount);
  
     bool enemyKilled = false;
+    bool gameOver = false;
+    std::string endMessage = "";
 
-    while (!enemies.empty()) {
+    while (!gameOver) {
 
         attackEnemies(defenses, enemies);
         
@@ -65,29 +67,38 @@ int main() {
             }
         }
 
-        // if (enemyKilled) {
-        //     render(map, enemies, enemyKilled);
-        //     std::cout << "\nEnemy killed!" << std::endl;
-        //     sleep();
-        //     sleep();
-        // }
-
-
         for (Enemy& enemy : enemies) updateEnemiesCoord(map, enemy);
 
         // check if enemy reached the base position
         for (const Enemy& enemy : enemies) {
             if (enemy.x == base.x && enemy.y == base.y) {
-                std::cout << "Enemy reached the base! Game Over!" << std::endl;
-                return 0;
+                endMessage = "Enemy reached the base! Game Over!";
+                gameOver = true;
+                //return 0;
             }
+        }
+        if (enemies.empty() && !gameOver) {
+            endMessage = "Congratulations! You killed the enemy!";
+            gameOver = true;
         }
 
         render(map, enemies, enemyKilled);
-        sleep();
+
+        if (gameOver) {
+            std::cout << "\n" << RED << endMessage << RESET << std::endl;
+            //break;
+        }
+
+        else sleep();
         //enemyKilled = false;
+        
+
+
     }
 
+    std::cout<<"\nPress Enter to exit..."<<std::endl;
+    std::cin.ignore();
+    std::cin.get();
     return 0;
 }
 
