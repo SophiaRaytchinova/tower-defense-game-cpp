@@ -44,10 +44,10 @@ void render(char map[ROWS][COLS], std::vector<Enemy>& enemies, bool enemyKilled)
     buffer << topAndBottomBorder << endl;
 
     if (!enemies.empty()) {
-        buffer << "Enemy HP: " << enemies[0].health << "%" << std::endl;
+        buffer << "Enemy HP: " << (int)enemies[0].health << "%   " << std::endl;
     }
     else {
-        buffer << "Enemy HP: 0%" << std::endl;
+        buffer << "Enemy HP: 0%   " << std::endl;
     }
     if (!enemies.empty()) {
         buffer << "STATUS: Enemy alive" << std::endl;
