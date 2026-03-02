@@ -19,7 +19,7 @@ int main() {
         {'#', '#', '#', '#', '#', '.', '.', '.', '#', '#'}
     };
 
-    BaseEntity base {8, 9, 'B'};
+    BaseEntity base {9, 8, 'B'};
 
     Enemy enemy1{0, 0, 100.0, 100.0, 0, 0, 'E', true};
     std::vector<Enemy> enemies = {enemy1};
@@ -67,36 +67,30 @@ int main() {
             }
         }
 
-        for (Enemy& enemy : enemies) updateEnemiesCoord(map, enemy);
-
-        // check if enemy reached the base position
-        for (const Enemy& enemy : enemies) {
-            if (enemy.x == base.x && enemy.y == base.y) {
-                endMessage = "Enemy reached the base! Game Over!";
-                gameOver = true;
-                //return 0;
-            }
-        }
-        if (enemies.empty() && !gameOver) {
+        if (enemies.empty()) {
             endMessage = "Congratulations! You killed the enemy!";
             gameOver = true;
+        }    
+        else {
+            for (Enemy& enemy : enemies) updateEnemiesCoord(map, enemy);
+            for (const Enemy& enemy : enemies) {
+                if (enemy.x == base.x && enemy.y == base.y) {
+                    endMessage = "Enemy reached the base! Game Over!";
+                    gameOver = true;
+                }
+            }
         }
 
         render(map, enemies, enemyKilled);
 
         if (gameOver) {
             std::cout << "\n" << RED << endMessage << RESET << std::endl;
-            //break;
         }
 
         else sleep();
-        //enemyKilled = false;
-        
-
-
     }
 
-    std::cout<<"\nPress Enter to exit..."<<std::endl;
+    std::cout<<"\nPress enter to exit..."<<std::endl;
     std::cin.ignore();
     std::cin.get();
     return 0;
