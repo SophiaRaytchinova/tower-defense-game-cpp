@@ -83,7 +83,10 @@ int main() {
 
         render(map, enemies, enemyKilled);
 
-        if (gameOver) {
+        if (gameOver && endMessage == "Congratulations! You killed the enemy!") {
+            std::cout << "\n" << BLUE << endMessage << RESET << std::endl;
+        }
+        else if (gameOver && endMessage == "Enemy reached the base! Game Over!") {
             std::cout << "\n" << RED << endMessage << RESET << std::endl;
         }
 

@@ -50,13 +50,13 @@ void render(char map[ROWS][COLS], std::vector<Enemy>& enemies, bool enemyKilled)
         buffer << "Enemy HP: 0%   " << std::endl;
     }
     if (!enemies.empty()) {
-        buffer << "STATUS: Enemy alive" << std::endl;
+        buffer << "Status: Enemy alive" << std::endl;
     }
     else if (enemyKilled) {
-        buffer << "STATUS:" << RED << "Enemy killed!" << RESET << std::endl;
+        buffer << "Status: " << BLUE << "Enemy killed!" << RESET << std::endl;
     }
     else {
-            buffer << "STATUS:" << YELLOW << "Enemy alive." << RESET << std::endl;
+            buffer << "Status: " << YELLOW << "Enemy alive." << RESET << std::endl;
     }
 
     // Clear screen once and display entire buffer at once
