@@ -13,14 +13,12 @@ struct Enemy {
     bool alive;
 };
 
-// fix name to be base entity
 struct BaseEntity {
     int x;
     int y;
     char symbol;
 };
 
-// make symbol to be T not D
 struct DefenseTower {
     int x;
     int y;
