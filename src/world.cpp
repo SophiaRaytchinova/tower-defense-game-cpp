@@ -60,8 +60,8 @@ void placeRandomDefenseTowers(char map[ROWS][COLS], std::vector<DefenseTower>& d
     int attemps = 0;
 
     while (placed < count && attemps < maxAttemps) {
-        int x = rand() % ROWS;
-        int y = rand() % COLS;
+        int x = rand() % COLS; // x is cols
+        int y = rand() % ROWS; // y is rows
 
         if (isValidDefenseTowerPlacement(map, x, y)) {
             DefenseTower tower;
