@@ -24,12 +24,11 @@ std::vector<std::pair<int, int>> path = {
 void updateEnemiesCoord(char map[ROWS][COLS], Enemy &enemy) {
     if (enemy.pathIndex + 1 < path.size()) {
        
-        map[enemy.x][enemy.y] = emptyGround;
+        map[enemy.y][enemy.x] = emptyGround;
         enemy.pathIndex++;
-        enemy.x = path[enemy.pathIndex].first;
-        enemy.y = path[enemy.pathIndex].second;
-        map[enemy.x][enemy.y] = enemy.symbol;
-
+        enemy.y = path[enemy.pathIndex].first;
+        enemy.x = path[enemy.pathIndex].second;
+        map[enemy.y][enemy.x] = enemy.symbol;
         return;
     }
 
