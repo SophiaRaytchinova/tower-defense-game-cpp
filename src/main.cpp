@@ -56,8 +56,11 @@ int main() {
     bool gameOver = false;
     std::string endMessage = "";
 
+    clearScreen();
+
     while (!gameOver) {
 
+        clearScreen();
         attackEnemies(defenses, enemies);
         
         for (int i = enemies.size() - 1; i >= 0; i--) {
@@ -91,8 +94,8 @@ int main() {
         }
 
         else sleep();
-    }
 
+    }
 
     std::cout<<"\nPress enter to exit..."<<std::endl;
     std::cin.ignore();

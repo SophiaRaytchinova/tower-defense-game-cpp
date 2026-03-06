@@ -42,7 +42,6 @@ void render(char map[ROWS][COLS], std::vector<Enemy>& enemies, bool enemyKilled)
         buffer << "|" << endl;
     }
     buffer << topAndBottomBorder << endl;
-
     if (!enemies.empty()) {
         buffer << "Enemy HP: " << (int)enemies[0].health << "%   " << std::endl;
     }
@@ -60,7 +59,6 @@ void render(char map[ROWS][COLS], std::vector<Enemy>& enemies, bool enemyKilled)
     }
 
     // Clear screen once and display entire buffer at once
-    clearScreen();
     cout << buffer.str();
     cout.flush();
     hideCursor();  // Hide cursor after all output
